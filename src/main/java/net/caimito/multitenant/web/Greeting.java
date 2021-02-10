@@ -5,6 +5,9 @@ import lombok.Data;
 @Data
 public class Greeting {
 
-	private String name ;
+	private String message ;
 	
+	public Greeting(String name) {
+		this.message = String.format("Hello, %s", name) ;
+	}
 }

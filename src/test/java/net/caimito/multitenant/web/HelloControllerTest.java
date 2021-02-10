@@ -1,6 +1,8 @@
 package net.caimito.multitenant.web;
 
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -18,8 +20,9 @@ public class HelloControllerTest {
 	@Test
 	@WithMockUser(value = "user")
 	void testName() throws Exception {
-		mockMvc.perform(get("/greet"))
-		.andExpect(status().isOk()) ;
+		mockMvc.perform(get("/greet/Stephan"))
+		.andExpect(status().isOk())
+		.andExpect(jsonPath("message", is("Hello, Stephan"))) ;
 	}
 	
 }
