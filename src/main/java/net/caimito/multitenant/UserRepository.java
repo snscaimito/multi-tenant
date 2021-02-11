@@ -5,9 +5,9 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepository {
@@ -20,7 +20,7 @@ public class UserRepository {
 
 	@PostConstruct
 	public void load() {
-		users.put("hans", new ApplicationUser("hans", encoder.encode("geheim"))) ;
+		users.put("hans", new ApplicationUser("hans", encoder.encode("geheim"), "customerOne")) ;
 	}
 	
 	public void save(ApplicationUser user) {

@@ -9,7 +9,8 @@ public class ApplicationUser {
 
 	private String username ;
 	private String password ;
-	
+	private String tenantId ;
 
 	public ApplicationUser() { }
+
 }
