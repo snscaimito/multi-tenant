@@ -1,6 +1,7 @@
 package net.caimito.multitenant.web;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,7 +26,7 @@ public class DataController {
 	private DataService dataService ;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Data> greet(Principal principal) {
+	public ResponseEntity<List<Data>> greet(Principal principal) {
 		ApplicationUser user = userRepository.findByUsername(principal.getName()) ;
 		
 		return ResponseEntity.ok(dataService.findDataForTenant(user.getTenantId())) ;
