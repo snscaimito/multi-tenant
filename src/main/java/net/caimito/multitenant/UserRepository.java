@@ -21,6 +21,7 @@ public class UserRepository {
 	@PostConstruct
 	public void load() {
 		users.put("hans", new ApplicationUser("hans", encoder.encode("geheim"), "customerOne")) ;
+		users.put("peter", new ApplicationUser("peter", encoder.encode("supergeheim"), "customerTwo")) ;
 	}
 	
 	public void save(ApplicationUser user) {
