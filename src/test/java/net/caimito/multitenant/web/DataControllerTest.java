@@ -21,7 +21,7 @@ public class DataControllerTest extends AbstractControllerTest {
 				new HttpEntity<>(login("hans", "geheim")), Data.class) ;
 		
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK) ;
-		assertThat(response.getBody().getContent()).isEqualTo("Something") ;
+		assertThat(response.getBody().getContent()).isEqualTo("customerOne") ;
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class DataControllerTest extends AbstractControllerTest {
 				new HttpEntity<>(login("peter", "supergeheim")), Data.class) ;
 		
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK) ;
-		assertThat(response.getBody().getContent()).isEqualTo("Something") ;
+		assertThat(response.getBody().getContent()).isEqualTo("customerTwo") ;
 	}
 
 }
