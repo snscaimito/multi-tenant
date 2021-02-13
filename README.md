@@ -4,6 +4,7 @@ A proof of concept for multi-tenancy
 - secure RESTful interface
 - user details are stored in tenant-specific MongoDB instances (containers)
 - JWT to know who's calling
+- Redis to store and retrieve `{ username, password, tenant database information ... }`
 
 
 	curl -i -H "Content-Type: application/json" -X POST -d '{
