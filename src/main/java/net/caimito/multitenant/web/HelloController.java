@@ -23,7 +23,7 @@ public class HelloController {
 	public ResponseEntity<Greeting> greet(Principal principal) {
 		ApplicationUser user = userRepository.findByUsername(principal.getName()) ;
 		
-		return ResponseEntity.ok(new Greeting(user.getUsername(), user.getTenantId())) ;
+		return ResponseEntity.ok(new Greeting(user.getUsername(), user.getTenantDataSourceId())) ;
 	}
 
 }

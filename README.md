@@ -30,3 +30,7 @@ A proof of concept for multi-tenancy
 	curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoYW5zIiwiZXhwIjoxNjEzODk4NDczfQ.cwr1ChJiQMmvjDG1c8S_vQ0jbjprfBvdU1lcpcg7LqjjA3FG-wmhhzjDqQ7i5iV0VDrJV_nL8_PMjyMTSuMX-g" http://localhost:8080/greet/Stephan
 
 	{"message":"Hello, Stephan"}%
+
+
+	curl -i -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoYW5zIiwiZXhwIjoxNjE0MTExMDYxfQ.gwjnWXkv-8FQfZSeVKGvpTw7xi9xOLKMfWAri29B8lqhCV9ZfK1sPSRHTMzkk48mYNdRFpbNypMTB2RkUTphgQ" http://localhost:8080/data
+	

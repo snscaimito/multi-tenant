@@ -1,4 +1,5 @@
 
 logging:
-  level: 
-     org.springframework.security: DEBUG
+  level:
+    net.caimito: DEBUG 
+#     org.springframework.security: DEBUG

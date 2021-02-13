@@ -20,8 +20,8 @@ public class UserRepository {
 
 	@PostConstruct
 	public void load() {
-		users.put("hans", new ApplicationUser("hans", encoder.encode("geheim"), "customerOne")) ;
-		users.put("peter", new ApplicationUser("peter", encoder.encode("supergeheim"), "customerTwo")) ;
+		users.put("hans", new ApplicationUser("hans", encoder.encode("geheim"), "hans")) ;
+		users.put("peter", new ApplicationUser("peter", encoder.encode("supergeheim"), "peter")) ;
 	}
 	
 	public void save(ApplicationUser user) {
