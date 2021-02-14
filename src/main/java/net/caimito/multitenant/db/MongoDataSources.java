@@ -21,41 +21,43 @@ import net.caimito.multitenant.TenantDataSource;
 @Component
 @Slf4j
 public class MongoDataSources {
-	private static Map<String, TenantDataSource> tenantDataSources = new HashMap<String, TenantDataSource>() ;
+	private static Map<String, TenantDataSource> tenantDataSources = new HashMap<String, TenantDataSource>();
 
 	static {
-		tenantDataSources.put("hans", new TenantDataSource("localhost", 27018, "admin-db")) ;
-		tenantDataSources.put("peter", new TenantDataSource("localhost", 27019, "admin-db")) ;
+		tenantDataSources.put("hans", new TenantDataSource("localhost", 27018, "admin"));
+		tenantDataSources.put("peter", new TenantDataSource("localhost", 27019, "admin"));
 	}
-	
+
 	@Bean
 	public String databaseName() {
-		return "admin-db";
+		return "tenantdb";
 	}
 
 	@Bean
 	public MongoClient getMongoClient() {
-		MongoCredential credential = MongoCredential.createCredential("admin", "admin-db", "geheim".toCharArray());
+//		MongoCredential credential = MongoCredential.createCredential("admin", "admin", "geheim".toCharArray());
 
 		return MongoClients.create(MongoClientSettings.builder()
 				.applyToClusterSettings(
 						builder -> builder.hosts(Collections.singletonList(new ServerAddress("localhost", 27017))))
-				.credential(credential).build());
+				.build()) ;
+//				.credential(credential).build());
 	}
 
 	public MongoDatabase mongoDatabaseCurrentTenantResolver() {
 		final String dataSourceId = TenantContext.getTenantDataSourceId();
-		
-		TenantDataSource dataSource = tenantDataSources.get(dataSourceId) ;
 
-		MongoCredential credential = MongoCredential.createCredential("admin", "admin-db", "geheim".toCharArray());
+		TenantDataSource dataSource = tenantDataSources.get(dataSourceId);
+
+//		MongoCredential credential = MongoCredential.createCredential("admin", dataSource.getDatabaseName(), "geheim".toCharArray());
 
 		log.debug("Using datasource {}", dataSource);
-		log.debug("Mongo credentials {}", credential);
-		
+//		log.debug("Mongo credentials {}", credential);
+
 		return MongoClients.create(MongoClientSettings.builder()
-				.applyToClusterSettings(
-						builder -> builder.hosts(Collections.singletonList(new ServerAddress(dataSource.getHost(), dataSource.getPort()))))
-				.credential(credential).build()).getDatabase(dataSource.getDatabaseName());
+				.applyToClusterSettings(builder -> builder.hosts(
+						Collections.singletonList(new ServerAddress(dataSource.getHost(), dataSource.getPort()))))
+				.build()).getDatabase(dataSource.getDatabaseName()) ;
+//				.credential(credential).build()).getDatabase(dataSource.getDatabaseName());
 	}
 }

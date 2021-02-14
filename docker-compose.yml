@@ -6,24 +6,24 @@ services:
         ports: 
         - "27017:27017"
         environment:
-        - MONGO_INITDB_ROOT_USERNAME="admin"
-        - MONGO_INITDB_ROOT_PASSWORD="geheim"
-        - MONGO_INITDB_DATABASE="admin-db"
+#         - MONGO_INITDB_ROOT_USERNAME="admin"
+#         - MONGO_INITDB_ROOT_PASSWORD="geheim"
+        - MONGO_INITDB_DATABASE="tenantdb"
 
     mongo-customerOne:
         image: mongo
         ports: 
         - "27018:27017"
         environment:
-        - MONGO_INITDB_ROOT_USERNAME="admin"
-        - MONGO_INITDB_ROOT_PASSWORD="geheim"
-        - MONGO_INITDB_DATABASE="admin-db"
-
+#         - MONGO_INITDB_ROOT_USERNAME="admin"
+#         - MONGO_INITDB_ROOT_PASSWORD="geheim"
+        - MONGO_INITDB_DATABASE="tenantdb"
+# 
     mongo-customerTwo:
         image: mongo
         ports: 
         - "27019:27017"
         environment:
-        - MONGO_INITDB_ROOT_USERNAME="admin"
-        - MONGO_INITDB_ROOT_PASSWORD="geheim"
-        - MONGO_INITDB_DATABASE="admin-db"
+#         - MONGO_INITDB_ROOT_USERNAME="admin"
+#         - MONGO_INITDB_ROOT_PASSWORD="geheim"
+        - MONGO_INITDB_DATABASE="tenantdb"
